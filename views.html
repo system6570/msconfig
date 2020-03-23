@@ -1,0 +1,2050 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <!--↑↑模板中请务必使用HTML5的标准DOCTYPE↑↑-->
+        <meta name="generator" content="ecstore.b2c" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="/Public/js/lang.js"></script>
+        <script src="/Public/js/moo.min.js?rev=ed4374"></script>
+        <script src="/Public/js/ui.min.js?rev=190813"></script>
+        <!--[if lt IE 9]>
+            <script src="https://www.huaweimossel.com/public/app/b2c/statics/js_mini/html5.js?rev=ab5112"></script>
+            <script src="https://www.huaweimossel.com/public/app/b2c/statics/js_mini/es5-sham.js?rev=52ec68"></script>
+        <![endif]-->
+        <script src="/Public/js/soda.js?rev=cfb312"></script>
+        <link href="/Public/css/base.css?rev=190920" rel="stylesheet" media="screen, projection" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <script src="/Public/js/lang.js"></script>
+        <script>var Shop = {
+                "url": {
+                    "shipping": "\/cart-shipping.html",
+                    "total": "\/cart-total.html",
+                    "region": "\/tools-selRegion.html",
+                    "payment": "\/cart-payment.html",
+                    "purchase_shipping": "\/cart-purchase_shipping.html",
+                    "purchase_def_addr": "\/cart-purchase_def_addr.html",
+                    "purchase_payment": "\/cart-purchase_payment.html",
+                    "get_default_info": "\/cart-get_default_info.html",
+                    "diff": "\/product-diff.html",
+                    "fav_url": "\/member-ajax_fav.html",
+                    "datepicker": "https:\/\/www.huaweimossel.com\/public\/app\/site\/statics\/js_mini",
+                    "placeholder": "https:\/\/www.huaweimossel.com\/public\/app\/b2c\/statics\/images\/imglazyload.gif"
+                },
+                "base_url": "\/"
+            };</script>
+        <script src="/Public/js/shop.min.js?v=170526"></script>
+        <title>9月会员沙龙 | 探索葡萄酒世界，精彩无止境-莫塞尔商城</title>
+        <meta name="keywords" content="小莫说-葡萄酒-9月会员沙龙 | 探索葡萄酒世界，精彩无止境">
+        <meta name="description" content="9月会员沙龙 | 探索葡萄酒世界，精彩无止境-莫塞尔商城">
+        <link rel="stylesheet" href="https://www.huaweimossel.com/widgetsproinstance-get_css-mossel-YXJ0aWNsZS0oMSkuaHRtbA==.html" />
+        <link href="https://www.huaweimossel.com/themes/mossel/images/css/article.css?rev=190716" rel="stylesheet" media="screen, projection" /></head>
+    
+    <body class="bgGray">
+        <header>
+            <section id="topbar" class="bgGray">
+                <div class="m-main track">
+                    <div class="head-cart hide">
+                        <div class="minicart" id="minicart_524">
+                            <a href="/cart.html" class="minicart-text border0">
+                                <i class="m-icon m-icon-cart shop"></i>购物车(
+                                <b class="op-cart-number red">0</b>)</a>
+                            <div class="minicart-cont shadow"></div>
+                        </div>
+                        <script>window.addEvent('domready',
+                            function() {
+                                updateCartInfo();
+
+                                var cartViewUrl = '/cart-view.html';
+                                var MiniCarWidgets = {
+                                    init: function() {
+                                        var minicart = this.cart = $('minicart_524');
+                                        this.detailbox = minicart.getElement('.minicart-cont');
+                                        this.handle = minicart.getElement('.minicart-text');
+                                        this.attach();
+                                    },
+                                    attach: function() {
+                                        this.handle.addEvents({
+                                            'mouseenter': function(e) {
+                                                if (e && this.state) return;
+                                                this.show();
+                                                this.request({
+                                                    url: cartViewUrl,
+                                                    method: 'post',
+                                                    onRequest: function() {
+                                                        this.detailbox.innerHTML = '<div class="loading">加载中...</div>';
+                                                    }.bind(this)
+                                                });
+                                            }.bind(this)
+                                        });
+                                        this.cart.addEvent('_show',
+                                        function(e) {
+                                            this.handle.fireEvent('mouseenter');
+                                        }.bind(this));
+                                    },
+                                    show: function(e) {
+                                        this.cart.addClass('minicart-active');
+                                        this.state = true;
+                                        var self = this;
+                                        $(document.body).addEvent('click',
+                                        function() {
+                                            self.hide();
+                                            this.removeEvent('click', arguments.callee);
+                                        });
+                                        return this;
+                                    },
+                                    hide: function() {
+                                        this.cart.removeClass('minicart-active');
+                                        this.state = false;
+                                    },
+                                    setHeight: function(el) {
+                                        var h = window.getSize().y - this.detailbox.getPosition(document.body).y + window.getScroll().y - this.detailbox.getPatch().y;
+                                        var dh = this.detailbox.getSize().y - this.detailbox.getPatch('padding', 'border').y;
+                                        if (dh >= h) {
+                                            this.detailbox.setStyle('height', h);
+                                        } else this.detailbox.setStyle('height', 'auto');
+                                        return this;
+                                    },
+                                    removeCart: function(el) {
+                                        this.request({
+                                            url: el.href,
+                                            data: el.getParent('.goods-item')
+                                        });
+                                    },
+                                    addEvent: function() {
+                                        var _this = this;
+                                        this.detailbox.getElements('.action-delete').addEvent('click',
+                                        function(e) {
+                                            e.stop();
+                                            _this.removeCart(this);
+                                        });
+                                    },
+                                    request: function(options) {
+                                        options = options || {};
+                                        options.data = (options.data ? options.data.toQueryString() : '') + '&mini_cart_list=true';
+                                        options = Object.merge({
+                                            method: 'post',
+                                            update: this.detailbox,
+                                            onSuccess: function(re) {
+                                                try {
+                                                    updateCartInfo();
+                                                    fixImageSize($$('img[data-img-zoom]'));
+                                                    try {
+                                                        new Tracker().locate('top_minicart');
+                                                    } catch(e) {}
+                                                } catch(e) {}
+                                                this.setHeight().addEvent();
+                                            }.bind(this)
+                                        },
+                                        options);
+                                        return new Request.HTML(options).send();
+                                    }
+                                };
+                                MiniCarWidgets.init();
+
+                            });
+
+                            // 购物车鼠标切换特效
+                            $$('.head-cart').addEvents({
+                                'mouseover': function(e) {
+                                    $$('.minicart-cont').show();
+                                },
+                                'mouseout': function(e) {
+                                    $$('.minicart-cont').hide();
+                                }
+                            });</script>
+                    </div>
+                    <div id="login_0" class="head-top">
+                        <p class="main-unlogin">
+                            <a class="border0">
+                                <i class="iconfont action-head-code green">&#xe618;</i>
+                                <img class="head-code shadow hide" src="https://www.huaweimossel.com/themes/mossel/widgets/topbar_member/images/wechat.png" /></a>
+                            <a href="http://weibo.com/mossel" target="_blank">
+                                <i class="iconfont action-head-code red f20">&#xe619;</i>
+                                <img class="head-code shadow hide" src="https://www.huaweimossel.com/themes/mossel/widgets/topbar_member/images/weibo.png" /></a>
+                            <a href="javascript:;" class="null">关注我们</a>
+                            <a href="/giftcard.html">提货卡兑换</a>
+                            <div class="action-cart-post"></div>
+                            <a href="/passport-signup.html" class="border0">注册</a>
+                            <a href="/passport-login.html">登录</a>
+                            <ul class="head-msg ">
+                                <img src="https://www.huaweimossel.com/themes/mossel/widgets/topbar_member/images/msg.gif" height="18" width="18" />
+                                <li id="js-msg1">
+                                    <a href="https://www.huaweimossel.com/giftcoupon-993.html">领券买新西兰蔓尔斯麦卢卡蜂蜜，立减30元</a>
+                                    <a href="https://www.huaweimossel.com/product-1278.html">买1送1，购买五粮液送火山卡美娜红葡萄酒</a></li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div id="member_0" class="head-top hide">
+                        <p class="main-login"></p>
+                        <div class="action-cart-post"></div>
+                        <a href="/giftcard.html">提货卡兑换</a>
+                        <a href="/member-inbox.html">站内信
+                            <span id="js_member_inbox_num" class="hide">(
+                                <b class="red"></b>)</span></a>
+                        <a href="/member-coupon.html">优惠券
+                            <span id="js_member_coupon_num" class="hide">(
+                                <b class="red"></b>)</span></a>
+                        <a href="/member-orders.html">我的订单</a>
+                        <a href="/member.html">会员中心</a>
+                        <div class="head-user">
+                            <a href="/member.html" class="border0">Hi ,
+                                <span id="uname_0"></span>&nbsp;!</a>
+                            <p class="head-user-menu shadow hide">
+                                <a href="/point-point_detail.html">我的积分</a>
+                                <a href="/member-setting.html">个人信息</a>
+                                <a href="/member-receiver.html">地址管理</a>
+                                <a href="/member-benefits.html">会员权益</a>
+                                <a href="/invoice-invoiceList.html">自助开票</a>
+                                <a href="/passport-logout.html">退出登录</a></p>
+                        </div>
+                        <ul class="head-msg ">
+                            <img src="https://www.huaweimossel.com/themes/mossel/widgets/topbar_member/images/msg.gif" height="18" width="18" />
+                            <li id="js-msg2">
+                                <a href="https://www.huaweimossel.com/giftcoupon-993.html">领券买新西兰蔓尔斯麦卢卡蜂蜜，立减30元</a>
+                                <a href="https://www.huaweimossel.com/product-1278.html">买1送1，购买五粮液送火山卡美娜红葡萄酒</a></li>
+                        </ul>
+                    </div>
+                    <script>// 登录判断
+                        var uname = Cookie.read('UNAME') || '';
+                        if (uname) { // already login
+                            $("uname_0").innerHTML = uname;
+                            $("member_0").removeClass('hide');
+                            $("login_0").addClass('hide');
+                            var oUl = $("js-msg2"),
+                            t;
+                        } else { // not login
+                            $("login_0").removeClass('hide');
+                            $("member_0").addClass('hide');
+                            var oUl = $("js-msg1"),
+                            t;
+                        }
+
+                        // 推广喇叭
+                        var funny = function(isUp) {
+                            if (!isUp) {
+                                oUl.style.top = "-22px";
+                                oUl.insertBefore(oUl.children[oUl.children.length - 1], oUl.children[0]);
+                            }
+                            clearInterval(oUl.t);
+                            oUl.t = setInterval(function() {
+                                var tmp = isUp ? -22 : 1;
+                                var speed = (tmp - (parseFloat(oUl.style.top) || oUl.offsetTop)) / 9;
+                                if (speed > 0) {
+                                    speed = Math.ceil(speed);
+                                } else if (speed < 0) {
+                                    speed = Math.floor(speed);
+                                } else {
+                                    clearInterval(t); !! isUp ? oUl.style.top = "0": 0; !! isUp ? oUl.appendChild(oUl.children[0]) : 0;
+                                }
+                                oUl.style.top = (parseFloat(oUl.style.top) || oUl.offsetTop) + speed + "px";
+                            },
+                            30);
+                        }
+                        if (oUl && oUl.children && oUl.children.length > 1) {
+                            setInterval(function() {
+                                funny(0);
+                            },
+                            5000);
+                        }
+
+                        // 顶部微博/微信二维码
+                        $$('.action-head-code').addEvents({
+                            mouseover: function() {
+                                this.getSiblings('img').removeClass('hide');
+                            },
+                            mouseleave: function() {
+                                this.getSiblings('img').addClass('hide');
+                            }
+                        })
+
+                        // 调整购物车位置
+                        window.addEvent('domready',
+                        function() {
+                            var cart = $$('.head-cart');
+                            $$('.action-cart-post').getParent('.head-top').each(function(item, index) {
+                                if (item.getStyle('display') != 'none') {
+                                    item.getElement('.action-cart-post').adopt(cart);
+                                    cart.removeClass('hide');
+                                }
+                            });
+                        });
+
+                        // 会员中心快捷菜单
+                        $$('.head-user').addEvents({
+                            mouseover: function() {
+                                $$('.head-user-menu').removeClass('hide');
+                            },
+                            mouseleave: function() {
+                                $$('.head-user-menu').addClass('hide');
+                            }
+                        });</script>
+                </div>
+            </section>
+            <section class="head-mid m-main track">
+                <h1 class="fl">
+                    <a href="./">
+                        <img src="https://www.huaweimossel.com/public/images/4e/a9/b3/6440faba58ca20e2d8bf8b8b19de872f17c76183.png?1546942887#w" height="60" width="347" alt="莫塞尔商城" /></a>
+                </h1>
+                <form action="/search-result.html" class="search-form" method="post" id="searchbar_521" async="false">
+                    <input class="x-input" type="text" id="search_keywords" name="search_keywords" placeholder="请输入您要搜索的内容..." />
+                    <i class="iconfont" id="submit">&#xe616;</i></form>
+                <script>(function(scope) {
+                        $('submit').addEvent('click',
+                        function(e) {
+                            if ($('search_keywords').get('value').trim() === '') {
+                                e.stop();
+                            } else {
+                                document.forms[0].submit();
+                            }
+                        })
+
+                        var search_keywords = decodeURIComponent(Memory.get('search_key'));
+                        if (search_keywords == 'null') {
+                            search_keywords = '';
+                        }
+                        //scope.getElement('input[name=search_keywords]').value = search_keywords;
+                    })($('searchbar_521'));</script>
+            </section>
+            <section class="head-box">
+                <div class="head-nav track">
+                    <ul>
+                        <li class="">
+                            <a href="https://www.huaweimossel.com/index.html" target="_self">首页</a></li>
+                        <li class="n-wine">
+                            <a href="wine.html" target="_self">美酒</a>
+                            <div class="hd-nav_menu">
+                                <div class="m-main">
+                                    <div class="hd-menu_state">
+                                        <h3>国家</h3>
+                                        <span class="ico-index ico-state"></span>
+                                        <p>
+                                            <a href="/gallery-index---0---101.html">法国</a>
+                                            <a href="/gallery-index---0---102.html">德国</a>
+                                            <a href="/gallery-index---0---103.html">意大利</a>
+                                            <a href="/gallery-index---0---104.html">西班牙</a>
+                                            <a href="/gallery-index---0---105.html">葡萄牙</a>
+                                            <a href="/gallery-index---0---112.html">格鲁吉亚</a>
+                                            <a href="/gallery-index---0---106.html">美国</a>
+                                            <a href="/gallery-index---0---109.html">南非</a>
+                                            <a href="/gallery-index---0---107.html">智利</a>
+                                            <a href="/gallery-index---0---108.html">阿根廷</a>
+                                            <a href="/gallery-index---0---111.html">新西兰</a>
+                                            <a href="/gallery-index---0---110.html">澳大利亚</a>
+                                            <a href="/gallery-index---0---113.html">中国</a></p>
+                                    </div>
+                                    <div class="hd-menu_type">
+                                        <h3>类型</h3>
+                                        <p>
+                                            <a href="/gallery-index---0---201.html">
+                                                <i class="ico-index ico-wineRed"></i>红葡萄酒</a>
+                                            <a href="/gallery-index---0---202.html">
+                                                <i class="ico-index ico-wineWhite"></i>白葡萄酒</a>
+                                            <a href="/gallery-index---0---204.html">
+                                                <i class="ico-index ico-wineDunk"></i>起泡酒</a>
+                                            <a href="/gallery-index---0---207.html">
+                                                <i class="ico-index ico-wineMaotai"></i>白酒</a>
+                                            <!--<a href="/gallery-index---0---410.html"><i class="ico-index ico-wineHot"></i>烈酒</a>--></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="n-food">
+                            <a href="food.html" target="_self">良食</a>
+                            <div class="hd-nav_menu">
+                                <p class="m-main hd-menu_main js-n-food">
+                                    <a href="/food.html#n-food0" style="margin-left: 10px;">
+                                        <i class="ico-index ico-fresh"></i>
+                                        <span>牛肉</span></a>
+                                    <a href="/food.html#n-food1">
+                                        <i class="ico-index ico-seafood"></i>
+                                        <span>海鲜</span></a>
+                                    <a href="/food.html#n-food2">
+                                        <i class="ico-index ico-rice"></i>
+                                        <span>米油</span></a>
+                                    <a href="/food.html#n-food3">
+                                        <i class="ico-index ico-snacks"></i>
+                                        <span>零食</span></a>
+                                    <a href="/food.html#n-food4">
+                                        <i class="ico-index ico-tea"></i>
+                                        <span>茶饮</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="card.html" target="_self">提货卡</a></li>
+                        <li class="">
+                            <a href="giftbox.html" target="_self">礼盒</a></li>
+                        <li class="">
+                            <a href="fine.html" target="_self">好物</a></li>
+                        <li class="n-find">
+                            <a href="video.html" target="_self">发现</a>
+                            <div class="hd-nav_menu">
+                                <p class="m-main hd-menu_main">
+                                    <a href="/articles.html" style="margin-left: 410px;">
+                                        <i class="ico-index ico-article"></i>
+                                        <span>小莫说</span></a>
+                                    <a href="/video.html">
+                                        <i class="ico-index ico-video"></i>
+                                        <span>视频</span></a>
+                                    <a href="/report.html">
+                                        <i class="ico-index ico-report"></i>
+                                        <span>体验报告</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="http://sale.huaweimossel.com/xinghui/v1.html" target="_blank">幸HUI</a></li>
+                        <li class="n-msl">
+                            <a href="brandsource.html" target="_self">MOSSEL</a>
+                            <div class="hd-nav_menu">
+                                <p class="m-main hd-menu_main">
+                                    <a href="/brandsource.html" style="margin-left: 540px;">
+                                        <i class="ico-index ico-brand"></i>
+                                        <span>品牌</span></a>
+                                    <a href="/brandsource-taster.html">
+                                        <i class="ico-index ico-tast"></i>
+                                        <span>品酒师</span></a>
+                                    <a href="/brandsource-screen.html">
+                                        <i class="ico-index ico-sel"></i>
+                                        <span>葡萄酒遴选</span></a>
+                                    <a href="/brandsource-quality.html">
+                                        <i class="ico-index ico-quality"></i>
+                                        <span>食材品控</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="fr">
+                            <a href="/member-vip.html" target="_self">VIP会员</a></li>
+                        <li class="fr">
+                            <a href="/member-stores.html" target="_self">积分商城</a></li>
+                    </ul>
+                    <i class="m-tag-triangle">服务
+                        <br>升级</i></div>
+            </section>
+        </header>
+        <section class="m-main track">
+            <div class="bread-crumbs">
+                <span>
+                    <a href="https://www.huaweimossel.com/articles.html" alt="" title="">小莫说</a></span>
+                <span>&gt;</span>
+                <span class="now">9月会员沙龙 | 探索葡萄酒世界，精彩无止境</span></div>
+            <div>
+                <dl class="col-recom">
+                    <dt>小莫推荐</dt>
+                    <dd>
+                        <p class="cur">
+                            <i class="iconfont">&#xe60b;</i>
+                            <em>1</em></p>
+                        <a target="_blank" title="" href="https://www.huaweimossel.com/article-articles_food-588.html" class="breviary2">锡兰红茶应该怎么喝？</a></dd>
+                    <dd>
+                        <p class="cur">
+                            <i class="iconfont">&#xe60b;</i>
+                            <em>2</em></p>
+                        <a target="_blank" title="" href="https://www.huaweimossel.com/article-articles_food-558.html" class="breviary2">航拍五常春播，惊艳啊老铁</a></dd>
+                    <dd>
+                        <p class="cur">
+                            <i class="iconfont">&#xe60b;</i>
+                            <em>3</em></p>
+                        <a target="_blank" title="" href="https://www.huaweimossel.com/article-articles_wine-312.html" class="breviary2">掌握7招品酒秘诀，告别葡萄酒小白身份！</a></dd>
+                </dl>
+            </div>
+            <div class="m-main_min art-cont">
+                <h2>9月会员沙龙 | 探索葡萄酒世界，精彩无止境</h2>
+                <span class="art-date">2019-09-17</span>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/37/82/e8/b2a16c31535c62b868890696e302ba09dbede4a9.jpg?1568713634#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">白露前夕，
+                        <span lang="EN-US" style="">9</span>月会员沙龙举行
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">本期主题是火山酒庄系列葡萄酒品鉴
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">品鉴热烈的葡萄酒
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">在忙碌的工作中享受片刻闲暇
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/c7/08/a4/f677204618b923b7ed23f1dcc8d93485073941f2.jpg?1568713650#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <span style="font-family: &quot;Microsoft Yahei&quot;; font-size: medium;">火山酒庄是来自智利的知名酒庄</span></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <span style="font-family: &quot;Microsoft Yahei&quot;; font-size: medium;">独特的火山风土</span></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <span style="font-family: &quot;Microsoft Yahei&quot;; font-size: medium;">令地心的能量化作葡萄酒中的矿物质气息</span></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <span style="font-family: &quot;Microsoft Yahei&quot;; font-size: medium;">葡萄酒清新怡人，芬芳馥郁</span></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/73/3a/4b/7aef0f36e380d389f66caec98a86314655c5df29.jpg?1568713691#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <span style="font-family: &quot;Microsoft Yahei&quot;; font-size: medium;">火山酒庄总经理</span>
+                    <font face="Microsoft Yahei" size="3">Ben Gordon是本次沙龙的嘉宾</font></p>
+                <p class="MsoNormal" style="text-align: center;"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">他是长居智利的英国绅士</font></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">
+                        <span lang="EN-US">2016</span>年加入火山酒庄</font></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">对葡萄酒有独到的见解</font></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/04/34/cc/fa69db4b3291d753c8869eee5e62ac28e8f9a5a7.jpg?1568713713#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">
+                        <br/></font>
+                </p>
+                <p class="MsoListParagraph" style="text-align: center; margin-left: 22.15pt; text-indent: -22.15pt;">
+                    <!--[if !supportLists]-->
+                        <font face="Microsoft Yahei">
+                            <font size="4">
+                                <strong>
+                                    <span lang="EN-US" style="">一、</span></strong>
+                            <!--[endif]-->
+                            <strong>盲品·在未知中挖掘葡萄酒之美</strong></font>
+                            <strong>
+                                <span lang="EN-US">
+                                    <o:p></o:p>
+                                </span>
+                            </strong>
+                        </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">盲品是葡萄酒爱好者们津津乐道的游戏
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">在不告知酒款信息的情况下
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">根据葡萄酒的香气、味道等线索进行探索比对
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">最终得出酒款信息
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">是理论知识和品鉴经历的考验
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoListParagraph" style="text-align: center; margin-left: 22.15pt; text-indent: -22.15pt;"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">刺激好玩
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/ff/a1/da/00b609a77d64da88e74234646e523c1b1f85dffa.jpg?1568713728#w">&nbsp;</p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">智利国宝级特色品种卡美娜
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">与红葡萄酒酿造之王赤霞珠
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">以及火山两大王牌混酿
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">碰撞出别样的火花
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">质感卓越，回味悠长
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/dd/04/11/fafc342d039b8903d350dc00868355da864b7bdd.jpg?1568713796#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">有来宾在迷离的眼神中互对答案
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">忐忑犹疑、相视一笑
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">揭晓后，优胜者们面露悦色
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">捧走证书和奖品
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">但无论是否猜对
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">大家都在这场探索中收获了快乐
+                        <span lang="EN-US" style="">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">比起对错，欢笑更重要
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/00/44/63/b159ed3c66c49c78298cde01a64b67960c801034.jpg?1568713872#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">
+                        <br/></font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei">
+                        <strong>
+                            <font size="4">二、重磅酒款·如烈火般炽烈的火魂</font></strong>
+                        <strong>
+                            <span lang="EN-US">
+                                <o:p></o:p>
+                            </span>
+                        </strong>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">火山系列火魂红葡萄酒的出现
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">再次撩拨起来宾们的热情与好奇
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">刚拿到手，神秘典雅的酒标
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">便吸引了全场的目光</font></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/50/06/e7/84ebb3e322a743dedf778ba2412584589d45b354.jpg?1568721218#h">&nbsp;</p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">“这是今晚的酒王”有人感叹
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">火魂每年限量
+                        <span lang="EN-US">2500</span>瓶
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">获国际葡萄酒挑战赛金奖
+                        <span lang="EN-US">95</span>分
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">智利葡萄酒年鉴
+                        <span lang="EN-US">92</span>分
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">稀缺而独特</font></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/a3/19/3e/fdc0aa3dfc643f85c7e1cd89be4099fd487e2198.jpg?1568713890#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">深浓热烈的紫红色酒体
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">就像熊熊燃烧的一团烈火
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">成熟的果香四溢而出
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">沁人心脾的花香萦绕
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">单宁细致，出色的成熟度令香气十分丰饶复杂
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">骨架紧实稳重
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">甚至可以感受到成熟浆果的咀嚼感
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/04/3a/a7/71b53f54b5a5a4ccfe8d6fa4a3efc82714402584.jpg?1568713895#w">
+                    <img src="https://www.huaweimossel.com/public/images/8f/9c/89/bb1f0e37d044af975c2dae67442aeed4a3e825a3.jpg?1568713940#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei">
+                        <strong>
+                            <font size="4">三、惊喜拍卖·高分酒款尝鲜</font></strong>
+                        <span lang="EN-US" style="font-size: medium;">
+                            <o:p></o:p>
+                        </span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">本期会员沙龙还引入全新互动环节——酒款拍卖
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">
+                        <span lang="EN-US">1</span>元起拍，价高者得
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">在激烈的竞争中
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">高分酒款被盲品冠军拍卖收入囊中
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <span lang="EN-US">
+                        <img src="https://www.huaweimossel.com/public/images/93/e3/61/a40d4655591759915de6ec87ca439463760a07d0.jpg?1568713951#w">
+                        <font face="Microsoft Yahei" size="3">&nbsp;</font></span>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">没能抱得美酒归的来宾也并非空手而回
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">现场为每位来宾派发伴手礼
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">内含精致的冰箱贴和便携水杯
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">可爱实用
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <img src="https://www.huaweimossel.com/public/images/7b/c0/ce/8e524e4487847416adf45b13a159e70e7d56b837.jpg?1568713963#w"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">夜风习习，凉意渐起
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">会员沙龙觥筹交错中完结
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">酒逢知己，千杯不足
+                        <span lang="EN-US">
+                            <o:p></o:p></span>
+                    </font>
+                </p>
+                <p class="MsoNormal"></p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">下次，又会有哪些可爱的人在此相遇？</font>
+                    <span lang="EN-US">
+                        <o:p></o:p>
+                    </span>
+                </p>
+                <p class="MsoNormal" style="text-align: center;">
+                    <font face="Microsoft Yahei" size="3">
+                        <br/></font>
+                </p>
+            </div>
+        </section>
+        <section id="mossel-level-loader" data-type="article" data-id="808" class="taste-msg"></section>
+        <script src="/Public/js/comment_loader.js?181203-5"></script>
+        <script>Mossel.comment.register('message', Message);
+            Mossel.comment.register('login',
+            function() {
+                location.href = '/passport-login.html';
+            });
+            Mossel.comment.start();</script>
+        <footer class="foot">
+            <section class="foot-link m-main track">
+                <dl>
+                    <dt>
+                        <a class="link" href="https://www.huaweimossel.com/article-gonggao-l-39.html">重要公告</a></dt>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-gonggao-422.html" title=网站更新通知>网站更新通知</a></dd>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-gonggao-406.html" title=莫塞尔授权门店>莫塞尔授权门店</a></dd>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-gonggao-305.html" title=华为邮箱绑定通知>华为邮箱绑定通知</a></dd>
+                </dl>
+                <dl>
+                    <dt>购物指南</dt>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-guide-66.html" title=优惠券使用规则>优惠券使用规则</a></dd>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-guide-439.html" title=提货卡章程>提货卡章程</a></dd>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-guide-394.html" title=会员权益>会员权益</a></dd>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/electronic_invoice.html" title=电子发票>电子发票</a></dd>
+                </dl>
+                <dl>
+                    <dt>配送服务</dt>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-delivery-61.html" title=配送范围与运费>配送范围与运费</a></dd>
+                </dl>
+                <dl>
+                    <dt>售后服务</dt>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-service-62.html" title=联系我们>联系我们</a></dd>
+                    <dd>
+                        <a href="https://www.huaweimossel.com/article-service-63.html" title=退换货规则>退换货规则</a></dd>
+                </dl>
+                <dl>
+                    <dt>集团网站</dt>
+                    <dd>
+                        <a target="_blank" title="华为官网" href="http://www.huawei.com">华为官网</a></dd>
+                    <dd>
+                        <a target="_blank" title="慧通官网" href="http://www.hwht.com">慧通官网</a></dd>
+                    <dd>
+                        <a target="_blank" title="华为商城" href="http://www.vmall.com">华为商城</a></dd>
+                </dl>
+                <ul class="fr">
+                    <li>
+                        <h3 class="f14">全国服务热线</h3>
+                        <h2>4008-919-282</h2>
+                        <span class="colorL">周一到周五以及月末周六：
+                            <br />08:30-12:00，13:30-18:00</span></li>
+                    <li class="code">
+                        <h3 class="f14">扫码关注莫塞尔微信</h3>
+                        <img src="https://www.huaweimossel.com/themes/mossel/images/img/code.jpg" height="100" width="100" alt="mossel" /></li>
+                </ul>
+            </section>
+            <section id="footer" class="page-footer">
+                <script>var Shop = window['Shop'] || {
+                        "url": {
+                            "region": "\/tools-selRegion.html",
+                            "placeholder": "https:\/\/www.huaweimossel.com\/public\/app\/b2c\/statics\/images\/imglazyload.gif"
+                        }
+                    };
+                    window.addEvent('domready',
+                    function() {
+                        var __time_out = 1000;
+                        if (Shop.set != undefined && Shop.set.refer_timeout) __time_out = Shop.set.refer_timeout;
+                        var ReferObj = {};
+                        Object.append(ReferObj, {
+                            serverTime: 1570707037,
+                            init: function() {
+                                var FIRST_REFER = Memory.get('FIRST_REFER');
+                                var NOW_REFER = Memory.get('NOW_REFER');
+                                var nowDate = this.time = this.serverTime * 1000;
+                                if (!window.location.href.test('#r-') && !document.referrer || document.referrer.test(document.domain)) return;
+                                if (window.location.href.test('#r-')) Memory.clean('n');
+                                if (!FIRST_REFER) {
+
+                                    if (NOW_REFER) {
+                                        Memory.set('FIRST_REFER', NOW_REFER, this.getTimeOut(JSON.decode(NOW_REFER).DATE));
+                                    } else {
+                                        this.setRefer('FIRST_REFER', __time_out);
+                                    }
+                                }
+                                this.setRefer('NOW_REFER', __time_out);
+                                this.createGUID();
+                            },
+                            getUid: function() {
+                                var lf = window.location.href,
+                                pos = lf.indexOf('#r-');
+                                return pos != -1 ? lf.substr(pos + 4) : '';
+                            },
+                            getRefer: function() {
+                                return document.referrer ? document.referrer: '';
+                            },
+                            setRefer: function(referName, timeout) {
+                                var uid = this.getUid(),
+                                referrer = this.getRefer();
+                                var data = {
+                                    'ID': uid,
+                                    'REFER': referrer,
+                                    'DATE': this.time
+                                };
+
+                                if ('NOW_REFER' == referName) {
+                                    var refer = JSON.decode(Memory.get('FIRST_REFER'));
+                                    if (uid != '' && refer && refer.ID == '') {
+                                        var fdata = {
+                                            'ID': uid,
+                                            'REFER': refer.REFER,
+                                            'DATE': refer.DATE
+                                        };
+                                        Memory.set('FIRST_REFER', JSON.encode(fdata), this.getTimeOut(refer.DATE));
+                                    } else if (uid == '') {
+                                        Object.append(data, {
+                                            'ID': refer.ID
+                                        });
+                                    }
+                                }
+                                Memory.set(referName, JSON.encode(data), __time_out || 15);
+                            },
+                            getTimeOut: function(nowDate) {
+                                var timeout = nowDate + __time_out * 24 * 3600 * 1000;
+                                var date = new Date(timeout);
+                                return date;
+                            },
+                            createGUID: function() {
+                                var GUID = (function() {
+                                    var S4 = function() {
+                                        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+                                    };
+                                    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4()).toUpperCase();
+                                })();
+                                Memory.set('n', GUID, 3650);
+                            }
+                        });
+                        ReferObj.init();
+                    });
+
+                    miniCart = {
+                        'show': function(target) {
+                            target = $(target);
+                            if (!target) return;
+
+                            if (this.dialog) {
+                                this.hide();
+                            }
+
+                            var options = {
+                                body: 'popup-body',
+                                header: 'popup-header',
+                                close: 'popup-btn-close',
+                                content: 'popup-content',
+                                title: '正在加入购物车',
+                                main: '<div class="loading">loading...</div>'
+                            },
+                            dialog = this.dialog = new Element('div#mini_cart_dialog.popup-container.mini-cart-dialog', {
+                                'html': $('popup_template').get('html').substitute(options),
+                                styles: {
+                                    display: 'block',
+                                    zIndex: maxZindex('div', 1)
+                                }
+                            }).inject(document.body);
+
+                            this.title = dialog.getElement('.popup-header h2');
+                            this.close = dialog.getElements('.popup-btn-close');
+                            this.content = dialog.getElement('.popup-content');
+                            this.dialog.addEvent('click:relay(.popup-btn-close)', this.hide.bind(this));
+
+                            var setSize = this.setSize = function() {
+                                if (!dialog.isDisplayed()) return;
+                                dialog.setStyles({
+                                    top: target.getPosition().y + target.getSize().y,
+                                    left: target.getPosition().x.limit(0, window.getSize().x - dialog.getSize().x) + window.getScroll().x
+                                });
+                            };
+
+                            setSize();
+                            window.addEvent('resize', setSize);
+                        },
+                        'hide': function() {
+                            try {
+                                this.dialog.destroy();
+                                window.removeEvent('resize', this.setSize);
+                            } catch(e) {}
+                        },
+                        'load': function(options) {
+                            options = options || {};
+                            options = Object.merge({
+                                method: 'post',
+                                onRequest: function() {
+                                    miniCart.show(options.target);
+                                },
+                                onSuccess: function(re) {
+                                    if (re) {
+                                        this.title.innerHTML = '提醒';
+                                        this.content.innerHTML = re;
+                                    }
+
+                                    updateCartInfo();
+
+                                    if (document.getElement('.minicart_box') && document.getElement('.minicart_box').get('show_gallery')) {
+                                        document.getElement('.minicart_box').fireEvent('_show'); //迷你购物车
+                                    }
+                                    options.callback && options.callback(re);
+
+                                    try {
+                                        new Tracker().locate('addcart');
+                                    } catch(e) {}
+                                }.bind(this),
+                                onFailure: function(xhr) {
+                                    this.title.innerHTML = '提醒';
+                                    this.content.innerHTML = '<div class="minicart-error"><p align="center">加入购物车失败。<br />可能库存不足或提交信息不完整。</p></div>';
+                                }.bind(this)
+                            },
+                            options || {});
+                            if (!options.url) return false;
+
+                            new Request(options).send(options.data ? options.data.toQueryString() + '&mini_cart=true': 'mini_cart=true');
+                        },
+                        init: function(target, url, data) {
+                            var linktocart;
+                            if (typeOf(target) == 'element') linktocart = target.getElements('[target=_dialog_minicart]');
+                            else if (typeOf(target) == 'elements') linktocart = target;
+                            else linktocart = $$('a[target=_dialog_minicart], button[target=_dialog_minicart]');
+                            if (linktocart.length) {
+                                linktocart.addEvent('click',
+                                function(e) {
+                                    e.preventDefault();
+                                    miniCart.load({
+                                        url: url || this.href,
+                                        data: data || this.getParent('.goods-item') || this.getParent('li'),
+                                        target: this
+                                    });
+                                });
+                            }
+                        }
+                    };
+
+                    formToCart = function(container, target) {
+                        container = $(container || document.body);
+                        target = target || '.action-addtocart';
+                        if (!container) return;
+
+                        var formtocart = container.getElement('form[target=_dialog_minicart]') || container.getFirst().getParent('form[target=_dialog_minicart]');
+                        if (formtocart) {
+                            formtocart.addEvent('submit',
+                            function(e) {
+                                e.stop();
+                                target = this.getElement(target) || this.getElement('*[type=submit]');
+                                miniCart.load({
+                                    url: this.action,
+                                    method: this.method,
+                                    data: this,
+                                    target: target,
+                                    callback: function() {
+                                        target.removeClass('disabled');
+                                    }.bind(this)
+                                });
+                            });
+                        };
+                    }
+                    ajax_info = function() {
+                        new Request({
+                            url: '/passport-ajax_info.html',
+                            method: 'get',
+                            onSuccess: function(response) {
+                                var rs = JSON.decode(response);
+                                if (!Cookie.read('UNAME') && rs.hasOwnProperty("user") && rs.user.hasOwnProperty("uname")) {
+                                    Cookie.write('UNAME', rs.user.uname);
+                                    if ($("login_0")) {
+                                        $("login_0").setStyle('display', "none");
+                                    }
+                                    if ($("member_0")) {
+                                        $("member_0").setStyle("display", "block");
+                                    }
+                                    if ($$(".cart-pos").length >= 2) {
+                                        $$(".cart-pos")[1].set("html", $$(".cart-pos")[0].get("html"));
+                                    }
+                                    if ($("uname_0")) {
+                                        $("uname_0").set("html", rs.user.uname)
+                                    }
+                                }
+                                if (rs.hasOwnProperty('coupon_num') && rs.coupon_num > 0) { //优惠券数量
+                                    $$(".minfo-tips").removeClass("hide");
+                                    if ($("js_member_coupon_num")) {
+                                        $("js_member_coupon_num").getFirst().innerHTML = rs.coupon_num;
+                                        $("js_member_coupon_num").removeClass("hide");
+                                    }
+                                }
+                                if (rs.hasOwnProperty('coupon_near_expiration') && rs.coupon_near_expiration.preferential_amount) { //优惠券即将过期
+                                    $$('#js_mem_coupon .js_tip_dot').setStyle('display', 'block');
+                                    $('js_coupon_price').innerHTML = rs.coupon_near_expiration.preferential_amount;
+                                    $('js_coupon_date').innerHTML = rs.coupon_near_expiration.show_to_time;
+                                    $('js_tip_box').setStyle("display", "block");
+                                    var timer = setTimeout(function() {
+                                        $('js_tip_box').setStyle("display", "none");
+                                    },
+                                    15000);
+                                }
+                                if (rs.hasOwnProperty('newgoods_num') && rs.newgoods_num > 0) { //新品上架
+                                    $$(".minfo-tips").removeClass("hide");
+                                    var $jsNewGoodsNum = $("js_newgoods_num");
+                                    if ($jsNewGoodsNum) {
+                                        $jsNewGoodsNum.getFirst().innerHTML = rs.newgoods_num;
+                                        $jsNewGoodsNum.removeClass("hide");
+                                    }
+                                }
+                                if (rs.hasOwnProperty('inbox_num') && rs.inbox_num > 0) { //站内信
+                                    $$(".minfo-tips").removeClass("hide");
+                                    if ($("js_member_inbox_num")) {
+                                        $("js_member_inbox_num").getFirst().innerHTML = rs.inbox_num;
+                                        $("js_member_inbox_num").removeClass("hide");
+                                    }
+                                }
+                                // if(rs.hasOwnProperty('is_huaweier') && rs.is_huaweier === 'true'){//会员邀请入口
+                                //     if ($("js-entry-invite")) {
+                                //         $("js-entry-invite").removeClass("hide");
+                                //     }
+                                // }
+                            }
+                        }).send();
+                    }
+
+                    window.addEvent('domready',
+                    function() {
+                        miniCart.init();
+                        formToCart();
+                        ajax_info();
+                        // 优惠券即将过期提醒框
+                        if ($('js_close_tip')) {
+                            $('js_close_tip').addEvent('click',
+                            function() {
+                                $('js_tip_box').setStyle('display', 'none');
+                            });
+                        }
+                    });</script>
+                <script id="popup_template" type="text/template">< div class = "{body}" > <div class = "{header} clearfix" > <i > 丨 < /i>
+        <h2>{title}</h2 > <a href = "javascript:;"title = "关闭"class = "{close} mb-close" > × < /a></div > <div class = "{content} clearfix" > {
+                        main
+                    } < /div>
+  </div > </script>
+                <script id="message_template" type="text/template">< div class = "{body} clearfix" > <div class = "icon" > {
+                        icon
+                    } < /div>
+    <div class="{content}">{main}</div ></div>
+/</script>
+                <script id="dropmenu_template" type="text/template">< div class = "{body}" > <div class = "{content} clearfix" > {
+                        main
+                    } < /div>
+  </div > </script>
+                <div class="net-copyright">
+                    <div class="maincont">
+                        <div class="links">
+                            <a href="brandsource.html" title="">关于莫塞尔</a>|
+                            <a href="delivery.html" title="">配送范围与运费</a>|
+                            <a href="passport-privacy.html" title="">隐私声明</a>|
+                            <a href="contact.html" title="">联系我们</a></div>
+                        <p>copyright ©2019 华为技术有限公司版权所有 |
+                            <a href="http://beian.miit.gov.cn/" target="_blank">粤A2-20044005号-13</a></p>
+                        <div class="gov-icons">
+                            <a href="http://61.144.227.239:9002/" title="深圳网络警察报警平台" target="_blank" class="police"></a>
+                            <a href="http://beian.miit.gov.cn/" title="经营性网站备案信息" target="_blank" class="icp"></a>
+                            <a href="http://61.144.227.239:9003/webrecord/_cert_result.jsp?bano=4403603020507" title="公共信息安全网络监察" target="_blank" class="aw"></a>
+                            <a href="http://szcert.ebs.org.cn/b52b800a-a09a-4d1d-b5dd-f1d49a89a404" title="深圳市市场监督管理局企业主体身份公示" target="_blank" class="gswj"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <script type="text/javascript">< !--
+                var _bdId = '22f60f38ad3c84695f2bf49e7552d753';
+                var _e = document.createElement("SCRIPT");
+                _e.src = "//hm.baidu.com/hm.js?" + _bdId;
+                document.body.appendChild(_e);
+                //-->
+                </script>
+            <script type="text/javascript">var _paq = _paq || [];
+                _paq.push(["setCookieDomain", "*.huaweimossel.com"]);
+                _paq.push(["setDomains", ["*.huaweimossel.com"]]);
+                _paq.push(["setCampaignNameKey", "from"]);
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']); (function() {
+                    var u = "//tongji.hwht.com/";
+                    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                    _paq.push(['setSiteId', '29']);
+                    var d = document,
+                    g = d.createElement('script'),
+                    s = d.getElementsByTagName('script')[0];
+                    g.type = 'text/javascript';
+                    g.async = true;
+                    g.defer = true;
+                    g.src = u + 'piwik.js';
+                    s.parentNode.insertBefore(g, s);
+                })();</script>
+            <noscript>
+                <p>
+                    <img src="//tongji.hwht.com/piwik.php?idsite=29" style="border:0;" alt="" /></p>
+            </noscript>
+            <section class="float-tag">
+                <ul>
+                    <li class="first">
+                        <p>
+                            <a href="https://www.huaweimossel.com/product-1286.html" target="_blank">
+                                <img data-src="https://www.huaweimossel.com/public/images/08/29/b2/3c4f14986f926e9596226b46f33313233ff0a1b2.jpg?1569835746#h" alt="" width="80" height="110" /></a>
+                        </p>
+                    </li>
+                    <li>
+                        <a href="/cart.html">
+                            <i class="iconfont">&#xe617;</i>
+                            <em>购物车</em></a>
+                        <p class="float-tag-tips shadow hide">
+                            <span>购物车</span>
+                            <span class="triangle-right">
+                                <em></em>
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="action-signin">
+                            <i class="iconfont">&#xe63f;</i>
+                            <em>签到升级</em></a>
+                        <p class="float-tag-tips shadow hide action-signin-tis">
+                            <i>
+                            </i>
+                            <span class="triangle-right">
+                                <em></em>
+                            </span>
+                        </p>
+                    </li>
+                    <li class="hide">
+                        <a href="/member-coupon.html" id="js_mem_coupon">
+                            <i class="iconfont">&#xe649;</i>
+                            <em>优惠券</em>
+                            <span class="js_tip_dot" style="display:none;">·</span></a>
+                        <p class="float-tag-tips shadow hide">
+                            <span>我的优惠券</span>
+                            <span class="triangle-right">
+                                <em></em>
+                            </span>
+                        </p>
+                        <div id="js_tip_box" class="coupon-tips shadow" style="display:none;">
+                            <span class="coupon-tips-close" id="js_close_tip">×</span>
+                            <p>你有
+                                <em class="red" id="js_coupon_price"></em>元小莫优惠券将于
+                                <em class="red" id="js_coupon_date"></em>到期请及时使用</p>
+                            <a href="/member-coupon.html">去使用</a>
+                            <span class="triangle-right">
+                                <em></em>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/service.html">
+                            <i class="iconfont">&#xe626;</i>
+                            <em>在线客服</em></a>
+                        <p class="float-tag-tips shadow hide">
+                            <span>在线客服</span>
+                            <span class="triangle-right">
+                                <em></em>
+                            </span>
+                        </p>
+                    </li>
+                </ul>
+                <ul>
+                    <li id="action-top" class="hide">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe64b;</i>
+                            <em>返回顶部</em></a>
+                        <p class="float-tag-tips shadow hide">
+                            <span>返回顶部</span>
+                            <span class="triangle-right">
+                                <em></em>
+                            </span>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            <script>var _floatTag = {
+                    init: function() {
+                        var t = this;
+
+                        t.bind();
+                        t.scroll();
+                    },
+                    bind: function() {
+                        var t = this;
+
+                        // 良食二级栏目点击后隐藏
+                        $$('.js-n-food a').addEvent('click',
+                        function() {
+                            var _m = this.getParent('.hd-nav_menu');
+                            _m.addClass('on');
+                            setTimeout(function() {
+                                _m.removeClass('on');
+                            },
+                            500)
+                        })
+
+                        // 良食点击购买上滑
+                        $$('.js-beef-pic').addEvent('mouseenter',
+                        function() {
+                            this.getElement('.btnRed').tween('bottom', '0px');
+                        }).addEvent('mouseleave',
+                        function() {
+                            this.getElement('.btnRed').tween('bottom', '-40px');
+                        })
+
+                        // 签到
+                        $$('.action-signin').addEvent('click',
+                        function() {
+                            var $tis = $$('.action-signin-tis'),
+                            $tisTxt = $tis.getChildren('i')[0];
+
+                            new Request.JSON({
+                                url: '/member-signin.html',
+                                onSuccess: function(ret) {
+                                    if (ret.success) {
+                                        $tisTxt.set('text', ret.success);
+                                    } else if (ret.error) {
+                                        $tisTxt.set('text', ret.error);
+                                    }
+                                    $tis.removeClass('hide');
+                                    setTimeout(function() {
+                                        $tis.addClass('hide');
+                                    },
+                                    3000);
+                                }
+                            }).send();
+                        })
+
+                        // mgm导航
+                        $('js-mgmid') && $$('.js-mgm-id') && $$('.js-mgm-id').removeClass('hide');
+                    },
+                    scroll: function() {
+                        var t = this;
+
+                        var _sTop = $('action-top'); // 返回顶部
+                        var _sNav = $$('.head-nav'); // 头部导航
+                        // 良食
+                        var _bNav = $$('.js-b-nav');
+                        var _floor = $$('.js-b-floor');
+                        var _navLi = $$('.js-b-nav li');
+
+                        window.addEvent('scroll',
+                        function() {
+                            var s = this.getScroll().y;
+
+                            // 显示返回顶部
+                            s > 500 ? _sTop.removeClass('hide') : _sTop.addClass('hide');
+
+                            // 导航固定
+                            s > 150 ? _sNav.addClass('fixed') : _sNav.removeClass('fixed');
+
+                            // 良食 自动切换电梯导航
+                            if (_bNav) {
+                                if (s > 500) {
+                                    _bNav.tween('right', '0');
+
+                                    _floor.each(function(index, i) {
+                                        var st = window.getScroll().y;
+                                        var gt = _floor[i].getPosition().y;
+
+                                        st >= gt && _navLi[i].addClass('on').getSiblings().removeClass('on');
+                                    })
+                                } else {
+                                    _bNav.tween('right', '-70px');
+                                }
+
+                            }
+                        })
+
+                        // 返回顶部
+                        _sTop.addEvent('click',
+                        function() {
+                            new Fx.Scroll(document.body).toTop();
+                            return false;
+                        })
+
+                        // 良食 电梯导航点击跳转
+                        _navLi.addEvent('click',
+                        function() {
+                            var i = _navLi.indexOf(this);
+                            new Fx.Scroll(document.body).toElement(_floor[i]);
+                        })
+                    }
+                }
+                _floatTag.init();</script>
+            <div id="action-coupon-package-popup" class="shade hide"></div>
+            <script id="tpl-coupon-package-popup" type="text/html">< div class = "layer ly-gift action-content" > <i class = "ly-close action-coupon-package-popup" > × < /i>
+        <form action="/couponpackage - useCouponPackage.html " method="post ">
+            <input name="package_id " value=" {
+                    {
+                        package_id
+                    }
+                }
+                " type="hidden ">
+            <input name="type " value=" {
+                    {
+                        type
+                    }
+                }
+                " type="hidden ">
+            <h3>—— <span>{{title}}</span> ——</h3>
+            <p class="f16 ">{{sub_title}}</p>
+            <img src=" {
+                    {
+                        image
+                    }
+                }
+                "/>
+            <div class="ly - gift - container ">
+                <div class="ly - gift - text ">
+                    <p class="ly - gift_tit ">{{desc}}</p>
+                    <p soda-if="now_price != 0 && old_price != 0 " class="txtl ">
+                        <i class="red ">{{now_price}}元</i> <s
+                            class="colorJ ">原价{{old_price}}</s></p>
+                </div>
+                <button type="submit " class="btnRed action - submit ">
+                    <span>{{btn_text}}</span></button>
+            </div>
+        </form>
+    </div>
+"</script>
+            <script id="tpl-coupon-package-notice" type="text/html">< dl class = "layer ly-gift ly-gift-notice" > <dt class = "ly-close action-coupon-package-notice" > × < /dt>
+        <dd soda-if="member">
+            <i soda-if="success" class="iconfont green">&#xe609;</i > <i soda -
+                if = "error"class = "iconfont red" > &#xe62b; < /i>
+
+            <h4 class="f20" soda-if="success">{{success}}</h4 > <h4 class = "f20"soda -
+                if = "error" > {
+                    {
+                        error
+                    }
+                } < /h4>
+
+            <p class="f16 mt10" soda-if="data.received">已放入您的优惠券账户，点击 <a class="red" href="/member - coupon.html ">"我的优惠券"</a> 查看</p>
+
+            <p class="f16 mt10 " soda-if="member.next_level ">您当前的会员等级是<span class="red ">{{member.level}}</span>, 还需{{member.need_experience}}成长值升到<span class="red ">{{member.next_level}}</span></p>
+            <p class="f16 mt10 " soda-if=" ! member.next_level ">您当前的会员等级是<span class="red ">{{member.level}}</span>，已经是最高等级了~</p></dd>
+    </dl>
+"</script>
+            <div id="action-coupon-package-notice" class="shade hide"></div>
+            <div id="onlineStep" class="online-step hide">
+                <span class="online-step-top"></span>
+                <div class="action-online-step-content">
+                    <script type="text/template" id="onlineStepContentTemplate">< h3 > {
+                            {
+                                title
+                            }
+                        }（ {
+                            {
+                                nowStep
+                            }
+                        }
+                        /{{maxStep}}）</h3 > <p > {
+                            {
+                                detail
+                            }
+                        } < /p>
+            <div>
+                <span class="online-step-button action-online-step-prev" soda-if="nowStep != 1">&lt;</span > <span class = "online-step-button action-online-step-next"soda -
+                        if = "nowStep != maxStep" > &gt; < /span>
+                <span class="online-step-button online-step-know action-online-step-know">我知道了</span ></div>
+        /</script>
+                </div>
+            </div>
+            <script>// 设置上线指引数据
+                var jsonOnline = false;</script>
+            <script src="/Public/js/online.js?rev=7d1afd"></script>
+            <div class="shade log-popup hide js-mb-shade">
+                <dl class="log-box middle js-login-box" id="page_signin">
+                    <dt class="log-nav js-nav">
+                        <p class="on">密码登录</p>
+                        <i class="colorJ">丨</i>
+                        <p>验证码登录</p>
+                        <i class="mb-close js-mb-close">×</i>
+                        <input type="hidden" id="js-sendNote" value="/passport-send_vcode_sms.html">
+                        <input type="hidden" id="js-sendEmail" value="/passport-send_vcode_email.html">
+                        <input type="hidden" id="js-sendDcode" value="/passport-ajax_is_able_to_send_dcode.html"></dt>
+                    <dd class="js-login-way">
+                        <form action="/passport-post_login.html" method="post" id="js-form-account">
+                            <ul class="log-list">
+                                <li>
+                                    <input class="x-input action-account-check js-chk-input" type="text" class="action-account-check js-chk-input" name="uname" id="dom_el_4728da0" value="" placeholder="用户名/邮箱/手机号" vtype="required" data-caution="请输入登录账号" autofocus="autofocus" /></li>
+                                <li>
+                                    <input class="x-input js-chk-input" type="password" class="js-chk-input" name="password" id="dom_el_4728da1" placeholder="密码" data-caution="请输入密码" oncontextmenu="return false;" onpaste="return false;" />
+                                    <i class="iconfont eye js-eye" rel="1">&#xe652;</i></li>
+                                <li class="action-verifycode hide">
+                                    <input class="x-input js-chk-input" type="text" class="js-chk-input" name="verifycode" placeholder="右侧验证码" data-caution="请输入验证码" id="dom_el_4728da2" maxlength="5" autocomplete="off" vtype="required&&alphaint" />
+                                    <span class="verify-span">
+                                        <img src="/index-gen_vcode-signin-5.html" alt="验证码" title="点击更换验证码" class="verify-code auto-change-verify-handle">
+                                        <a href="/index-gen_vcode-signin-5.html" class="verify-code auto-change-verify-handle">换一张</a></span>
+                                </li>
+                            </ul>
+                            <div class="log-auto">
+                                <input type="checkbox" name="site_autologin" id="for_auto_signin" class="action-auto-signin" checked="checked">
+                                <label for="for_auto_signin" class="cursor colorJ">两周内自动登录</label>
+                                <a class="fr blue" href="/passport-lost.html">忘记密码</a></div>
+                            <input type="hidden" name="login_mode" value="account" />
+                            <button type="submit" class="btnRed mb10 js-submit-login" rel="_request">登录</button>
+                            <a href="/passport-signup.html" class="btnGray">立即注册</a></form>
+                    </dd>
+                    <dd class="js-login-way hide" rel="">
+                        <form action="/passport-post_login.html" method="post" id="js-form-dynamic">
+                            <ul class="log-list">
+                                <li class="action-verifycode hide">
+                                    <input class="x-input js-chk-input" type="text" class="js-chk-input" name="verifycode" placeholder="右侧验证码" data-caution="请输入验证码" id="dom_el_4728da3" maxlength="5" autocomplete="off" vtype="required&&alphaint" />
+                                    <span class="verify-span">
+                                        <img src="/index-gen_vcode-signin-5.html" alt="验证码" title="点击更换验证码" class="verify-code auto-change-verify-handle">
+                                        <a href="/index-gen_vcode-signin-5.html" class="verify-code auto-change-verify-handle">换一张</a></span>
+                                </li>
+                                <li>
+                                    <input class="x-input action-account-check js-chk-input" type="text" autocomplete="off" class="action-account-check js-chk-input" name="uname" id="dom_el_4728da4" value="" placeholder="邮箱/手机号" vtype="required" data-caution="请输入邮箱或手机号" autofocus="autofocus" />
+                                    <a href="/passport-send_vcode_sms.html" class="blue action-get-verifycode">获取动态密码</a></li>
+                                <li>
+                                    <input class="x-input verify-input js-chk-input" type="text" name="dynamic_code" placeholder="动态密码" class="verify-input js-chk-input" id="dom_el_4728da5" /></li>
+                            </ul>
+                            <div class="log-auto">
+                                <input type="checkbox" name="site_autologin" id="for_auto_signin1" class="action-auto-signin" checked="checked">
+                                <label for="for_auto_signin1" class="cursor colorJ">两周内自动登录</label></div>
+                            <input type="hidden" name="login_mode" value="dynamic" />
+                            <button type="submit" class="btnRed mb10 js-submit-login" rel="_request">登录</button>
+                            <a href="/passport-signup.html" class="btnGray">立即注册</a></form>
+                    </dd>
+                    <dd class="log-join">
+                        <a href="/passport-signup.html">请注册</a>丨
+                        <a href="/passport-lost.html">忘记密码</a></dd>
+                </dl>
+                <dl class="log-box middle js-password hide" id="js-pswchg-holder"></dl>
+            </div>
+            <div id="js-pswchg-template" class="hide">
+                <form action="/passport-post_security.html" method="post" id="js-form-security">
+                    <dd class="js-password-change hide" soda-if="mobile !== '' || email !== ''">
+                        <h2 class="tit">修改密码</h2>
+                        <p class="mb10 colorL">您的密码过于简单，请修改密码以提升账户安全，改完后完成登录。</p>
+                        <ul class="log-list">
+                            <li class="log-verify">
+                                <span>身份验证方式：</span>
+                                <label for="for_verify_mobile" class="form-sub-label" soda-if="mobile !== ''">
+                                    <input type="radio" name="send_type" id="for_verify_mobile" class="action-verify-method" value="mobile" rel="{{mobile}}" checked="checked" />手机短信验证码</label>
+                                <label for="for_verify_email" class="form-sub-label" soda-if="email !== ''">
+                                    <input type="radio" name="send_type" id="for_verify_email" class="action-verify-method" value="email" rel="{{email}}" soda-checked="{{mobile === '' ? 'checked' : ''}}" />邮件验证码</label>
+                                <p class="txt" id="js-verify-method"></p>
+                            </li>
+                            <li>
+                                <input class="x-input" type="text" name="psw_dcode" value="" placeholder="验证码" vtype="required" data-caution="请输入验证码" autofocus="autofocus" id="dom_el_4728da6" />
+                                <a href="javascript:;" class="blue js-get-psw-dcode">获取动态密码</a></li>
+                            <li>
+                                <input class="x-input" type="password" name="passwd" value="" placeholder="新密码" vtype="required" data-caution="请输入新密码" autofocus="autofocus" id="dom_el_4728da7" oncontextmenu="return false;" onpaste="return false;" /></li>
+                            <li>
+                                <input class="x-input" type="password" name="passwd_re" value="" placeholder="确认新密码" vtype="required" data-caution="请重新输入新密码" autofocus="autofocus" id="dom_el_4728da8" oncontextmenu="return false;" onpaste="return false;" />
+                                <p class="colorJ mt10 f12">密码必须至少8个字符，而且同时包含大写字母、小写字母、数字和特殊符号中的2种</p></li>
+                        </ul>
+                        <input type="hidden" name="uname" id="js-pswchg-uname" value="{{uname}}" />
+                        <input type="hidden" name="unameToken" value="{{unameToken}}" />
+                        <button class="btnRed js-submit-pswchg">确定</button></dd>
+                </form>
+                <dd class="js-password-issue" soda-if="mobile === '' && email === ''">
+                    <h2 class="tit mb20">帐号存在安全问题</h2>
+                    <p class="mb20">您的帐号存在安全问题，暂时限制使用，
+                        <br>请联系客服处理。</p>
+                    <p class="colorJ">联系客服热线：4008-919-282
+                        <br>周一到周五以及月末周六08:30-12:00，13:30-18:00</p>
+                    <a target="_blank" class="btnWhite" href="/service.html">联系在线客服</a></dd>
+            </div>
+            <script>var loginQuick = {
+                    init: function() {
+                        var t = this;
+
+                        t.render();
+                        t.bind();
+                    },
+                    render: function() {
+                        var t = this;
+
+                        // 登录页
+                        t.$s = $$('.js-mb-shade');
+                        t.logBody = $('js-logBody');
+                        if (t.logBody) {
+                            t.logBody.innerHTML = t.$s.get('html');
+                            $$('.js-login-box').removeClass('middle');
+                            t.removeHtml(t.$s[0]);
+                        }
+
+                        // 定义
+                        t.$p = $$('.js-nav p');
+                        t.$w = $$('.js-login-way');
+                        t.showVcode = t.$w[0].get('rel');
+                        t.sendNote = $('js-sendNote').value;
+                        t.sendEmail = $('js-sendEmail').value;
+                        t.sendDcode = $('js-sendDcode').value;
+                        t.submit = $$('.js-submit-login');
+                        t.verifycode = $$('.action-verifycode');
+                        t.loginCb = undefined;
+                        t.pswchgHolder = $('js-pswchg-holder');
+                        t.pswchgTmpl = $('js-pswchg-template').innerHTML;
+                    },
+                    bind: function() {
+                        var t = this;
+
+                        // 登录方式切换
+                        t.$p.addEvent('click',
+                        function() {
+                            this.addClass('on').getSiblings('p').removeClass('on');
+                            var i = t.$p.indexOf(this);
+                            t.$w.addClass('hide');
+                            t.$w[i].removeClass('hide');
+                        })
+
+                        t.$w.addEvents({
+                            'click:relay(.js-dynamic-login)': function(e) { // 验证码登录
+                                e.stop();
+                                t.$p[1].click();
+                            },
+                        })
+
+                        // 发送验证码
+                        $$('.action-get-verifycode').addEvent('click',
+                        function(e) {
+                            e.preventDefault();
+                            if (this.hasClass('disabled')) return false;
+
+                            var el = this.getSiblings('.action-account-check')[0],
+                            elVal = el.value,
+                            elVcode = el.getParent().getSiblings('.action-verifycode')[0],
+                            elVycode = elVcode.getElement("input[name='verifycode']").value,
+                            check_data = 'uname=' + elVal,
+                            that = this;
+
+                            t.send(t.sendDcode, el, check_data,
+                            function(rs) {
+                                if (rs.error) {
+                                    el.setAttribute('data-caution', rs.error);
+                                    el.addClass('caution-input');
+                                    formTips.error(el.get('data-caution'), el).store();
+
+                                    if (t.showVcode == 1 || (rs.data && rs.data.needVcode == 1)) {
+                                        t.verifycode.removeClass('hide');
+                                    }
+                                }
+                                if (rs.success) {
+                                    var sendData = el.name + '=' + elVal + '&type=signin'; ! elVcode.hasClass('hide') && (sendData += '&sms_vcode=' + elVycode);
+
+                                    if (/^0?1\d{10}$/.test(elVal)) {
+                                        t.sendVerify(that, sendData, t.sendNote);
+                                    } else if (/(\S)+[@]{1}(\S)+[.]{1}(\w)+/.test(elVal)) {
+                                        t.sendVerify(that, sendData, t.sendEmail);
+                                    } else {
+                                        el.setAttribute('data-caution', '请填写正确的手机号');
+                                        el.addClass('caution-input');
+                                        formTips.error(el.get('data-caution'), el).store();
+                                        return false;
+                                    }
+                                }
+                            })
+                        })
+
+                        // 登录
+                        t.submit.store('_ajax_config', {
+                            onLoadstart: function(event, xhr) {
+                                t.submit.each(function(item, index) {
+                                    item.set('html', '登录中...').addClass('disabled').addClass('btnGray');
+                                })
+                            },
+                            progress: function(rs) {
+                                if (rs.error) {
+                                    t.submit.each(function(item, index) {
+                                        item.set('html', '登录').removeClass('disabled').removeClass('btnGray');
+                                    })
+
+                                    if (rs.data.code == '7') { // 密码强度未达到最低要求
+                                        t.pswchgHolder.innerHTML = soda(t.pswchgTmpl, rs.data);
+                                        t.showPswchgPopup();
+                                        t.showVerifyMethod();
+                                        return false;
+                                    }
+
+                                    if (t.showVcode == 1 || (rs.data && rs.data.needVcode == 1)) {
+                                        t.verifycode.removeClass('hide');
+                                    }
+
+                                    var el = t.getShowErrorsObj(rs.data);
+                                    if (el) {
+                                        var errMsg = rs.error;
+                                        if (rs.data.code == '51') {
+                                            errMsg += '。帐号可能是邮箱/手机号？<a href="javascript:;" class="js-dynamic-login">验证码登录</a>';
+                                        } else if (rs.data.code == '52') {
+                                            errMsg += '，请重试<br/>或<a href="javascript:;" class="js-dynamic-login">验证码登录</a>';
+                                        }
+                                        t.showError(el, errMsg);
+                                    } else {
+                                        return top.Message.error(rs.error,
+                                        function() {
+                                            if (rs.redirect) {
+                                                t.redirect(rs.redirect);
+                                            }
+                                        });
+                                    }
+                                }
+
+                                if (rs.success) {
+                                    if (t.loginCb) {
+                                        t.loginCb();
+                                    } else {
+                                        return top.Message.success(rs.success, 2,
+                                        function() {
+                                            if (rs.redirect) {
+                                                t.redirect(rs.redirect);
+                                            }
+                                        });
+                                    }
+                                }
+                            },
+                            onComplete: function(rs) {
+                                rs = JSON.decode(rs[0]);
+
+                                t.submit.each(function(item, index) {
+                                    item.set('html', '登录').removeClass('disabled').removeClass('btnGray');
+                                })
+
+                                if (rs) {
+                                    if (t.loginCb) {
+                                        t.loginCb();
+                                    } else {
+                                        t.redirect(rs.redirect);
+                                    }
+                                }
+                            }
+                        })
+
+                        // 点击该输入框之后，错误隐藏
+                        $$('.js-chk-input').addEvents({
+                            click: function(e) {
+                                t.removeError(e.target)
+                            },
+                            change: function(e) {
+                                t.removeError(e.target)
+                            },
+                        })
+
+                        // 显示登录弹框
+                        $$('.action-login-popup').addEvent('click',
+                        function() {
+                            t.show(function() {
+                                location.reload();
+                            })
+                        })
+
+                        // 公共弹框隐藏
+                        $$('.js-mb-close').addEvent('click',
+                        function() {
+                            this.getParent('.shade').addClass('hide');
+                        })
+
+                        // 密码明文显示隐藏
+                        $$('.js-eye').addEvent('click',
+                        function() {
+                            var rel = $(this).get('rel');
+                            if (rel === '1') {
+                                $(this).set({
+                                    'html': '&#xe653;',
+                                    'rel': '0'
+                                }).getSiblings('input').set('type', 'text');
+                            } else {
+                                $(this).set({
+                                    'html': '&#xe652;',
+                                    'rel': '1'
+                                }).getSiblings('input').set('type', 'password');
+                            }
+                        })
+
+                        t.pswchgHolder.addEvents({
+                            'click:relay(.action-verify-method)': function(e) { // 修改密码-身份验证方式
+                                // e.stop();
+                                t.showVerifyMethod();
+                            },
+                            'click:relay(.js-get-psw-dcode)': function(e) { // 修改密码-获取验证码
+                                e.stop();
+                                t.getPswchgDcode();
+                            },
+                            'click:relay(.js-submit-pswchg)': function(e) { // 修改密码-提交表单
+                                e.stop();
+                                t.submitPswchg();
+                            }
+                        })
+                    },
+                    send: function(url, element, data, fn) {
+                        new Request({
+                            url: url,
+                            link: 'cancel',
+                            onSuccess: function(rs) {
+                                if (rs) {
+                                    try {
+                                        rs = JSON.decode(rs);
+                                    } catch(e) {}
+                                    fn && fn.call(this, rs);
+                                }
+                            }
+                        }).post(data);
+                    },
+                    sendVerify: function(el, data, url) {
+                        var t = this;
+                        el.set('html', '重新发送(<i>0</i>)').addClass('disabled');
+                        var cd = new countdown(el.getElement('i'), {
+                            start: 120,
+                            secondOnly: true,
+                            callback: function(e) {
+                                el.set('html', '重新发送').removeClass('disabled');
+                            }
+                        });
+                        t.send(url, el, data,
+                        function(rs) {
+                            if (rs.error) {
+                                cd.stop();
+                                el.set('html', '重新发送').removeClass('disabled');
+
+                                if (t.showVcode == 1 || (rs.data && rs.data.needVcode == 1)) {
+                                    t.verifycode.removeClass('hide');
+                                }
+                                if (rs.data && rs.data.vcode_error == 'true') {
+                                    var obj = el.getParents('form')[0].getElements('input[name="verifycode"]')[0];
+                                } else {
+                                    var obj = el.getParents('form')[0].getElements('input[name="uname"]')[0];
+                                }
+                                el.removeClass('caution-input');
+                                t.showError(obj, rs.error);
+                            } else {
+                                formTips.success(rs.success, el, {
+                                    type: 'success',
+                                    autohide: 5
+                                }).store();
+                            }
+                        });
+                    },
+                    redirect: function(url) {
+                        url && (location.href = url);
+                    },
+                    getShowErrorsObj: function(params) {
+                        var code = params.code;
+                        var mode = params.mode;
+
+                        if (mode != 'dynamic' && mode != 'account') {
+                            return null;
+                        }
+
+                        var form = $('js-form-' + mode);
+                        var element = null;
+                        switch (code) {
+                        case 1:
+                            // 该账户因为输入密码次数太多被锁定，请3小时后再试。
+                        case 6:
+                            // 账号存在高风险行为
+                        case 50:
+                            // 帐号或密码错误
+                        case 51:
+                            // 帐号或密码错误
+                        case 52:
+                            // 帐号或密码错误
+                        case 53:
+                            // 帐号或密码错误
+                            element = form.getElements('input[name="uname"]')[0];
+                            break;
+                        case 2:
+                            // 登录方式不正确，请在动态登录和账号登录中选择一种登录方式
+                            break;
+                        case 3:
+                            // 请填写正确的验证码
+                            element = form.getElements('input[name="verifycode"]')[0];
+                            break;
+                        case 4:
+                            // 请填写正确的动态密码
+                            element = form.getElements('input[name="dynamic_code"]')[0];
+                            break;
+                        case 5:
+                            // 请输入密码
+                            element = form.getElements('input[name="password"]')[0];
+                            break;
+                        }
+                        return element;
+                    },
+                    showError: function(el, error) {
+                        var t = this;
+                        $$('.notice-inline').each(function(item, index) {
+                            t.removeHtml(item);
+                        });
+                        el.setAttribute('data-caution', error);
+                        el.addClass('caution-input');
+                        formTips.error(el.get('data-caution'), el).store();
+                    },
+                    removeError: function(el) {
+                        var t = this;
+                        el.removeClass('caution-input');
+                        if (el.getSiblings('.notice-inline').length) {
+                            $$(el.getSiblings('.notice-inline')).each(function(item, index) {
+                                t.removeHtml(item);
+                            })
+                        }
+                    },
+                    show: function(cb) {
+                        var t = this;
+                        t.loginCb = cb;
+                        t.$s.removeClass('hide');
+                    },
+                    hide: function() {
+                        var t = this;
+                        t.$s.addClass('hide');
+                    },
+                    removeHtml: function(ele) {
+                        var parentObj = ele.parentNode;
+                        parentObj.removeChild(ele);
+                    },
+                    showPswchgPopup: function() {
+                        var t = this;
+                        $$('.js-login-box').addClass('hide');
+                        $$('.js-password, .js-password-change').removeClass('hide');
+
+                        // 登录页 添加遮罩
+                        if (t.logBody) {
+                            t.logBody.insertAdjacentHTML('beforebegin', '<div class="shade"></div>');
+                        }
+                    },
+                    showVerifyMethod: function() { // 修改密码-身份验证方式
+                        var t = this;
+                        var $method = $$('input[name="send_type"]:checked')[0];
+                        var type = $method.get('value');
+                        var rel = $method.get('rel');
+                        var text = type === 'mobile' ? '您的手机号' + rel: '您的邮箱' + rel;
+                        $('js-verify-method').innerHTML = text;
+                    },
+                    getPswchgDcode: function() { // 修改密码-获取验证码
+                        var t = this;
+                        var elDcode = $$('input[name="psw_dcode"]')[0];
+                        var el = $$('.js-get-psw-dcode')[0];
+                        var $formSecurity = $('js-form-security');
+                        var data = $formSecurity.toQueryString();
+                        // 发送请求
+                        t.removeError(elDcode); // 清理错误提示
+                        el.set('html', '重新发送(<i>0</i>)').addClass('disabled');
+                        var cd = new countdown(el.getElement('i'), {
+                            start: 120,
+                            secondOnly: true,
+                            callback: function(e) {
+                                el.set('html', '重新发送').removeClass('disabled');
+                            }
+                        });
+                        t.send('/passport-send_vcode_password.html', el, data,
+                        function(rs) {
+                            if (rs.error) {
+                                cd.stop();
+                                el.set('html', '重新发送').removeClass('disabled');
+                                t.showError(elDcode, rs.error);
+                            } else {
+                                formTips.success(rs.success, elDcode, {
+                                    type: 'success',
+                                    autohide: 5
+                                }).store();
+                            }
+                        });
+                    },
+                    submitPswchg: function() { // 修改密码-提交表单
+                        var t = this;
+                        var $formSecurity = $('js-form-security');
+                        var data = $formSecurity.toQueryString();
+                        var url = $formSecurity.get('action');
+                        t.send(url, $formSecurity, data,
+                        function(rs) {
+                            if (rs.error) {
+                                return top.Message.error(rs.error);
+                            } else {
+                                return top.Message.success(rs.success, 2,
+                                function() {
+                                    if (rs.redirect) {
+                                        t.redirect(rs.redirect);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+                loginQuick.init();</script>
+            <script src="/Public/js/base64.js?rev=d13e01"></script>
+            <script src="/Public/js/tracker.js?rev=955902"></script>
+        </footer>
+    </body>
+
+</html>
